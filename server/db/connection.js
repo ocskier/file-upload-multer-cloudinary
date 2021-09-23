@@ -25,7 +25,7 @@ export function connectToDB(cb) {
   db.on('error', console.error.bind(console, 'connection error:'));
   db.once('open', function () {
     console.log(
-      chalk.bold.green(
+      chalk.bold.green.bgGrey(
         `Successful connection to ${
           process.env.MONGODB_URL || 'mongodb://localhost:27017/chat'
         }`
