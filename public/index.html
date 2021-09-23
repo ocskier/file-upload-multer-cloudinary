@@ -4,19 +4,75 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        
-        <script src="" async defer></script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cloudinary File Upload</title>
+    <link rel="shortcut icon" href="" />
+    <meta
+      name="description"
+      content="A full-stack app that uploads photos to Cloudinary"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="" />
+    <style>
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+      }
+      main {
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .ui.card .image {
+        min-width: 100%;
+        min-height: 15rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <main>
+      <div class="ui card">
+        <div class="image">
+          <img src="/images/avatar2/large/kristy.png" />
+        </div>
+        <div class="extra content">
+          <div class="ui form">
+            <div class="field">
+              <label for="file-input">Photo File Upload</label>
+              <input
+                id="file-upload"
+                name="file-input"
+                type="file"
+                accept="image/png, image/jpeg"
+                placeholder="File Path"
+              />
+            </div>
+            <div class="ui submit button">Submit</div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="" async defer></script>
+  </body>
 </html>
