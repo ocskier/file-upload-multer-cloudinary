@@ -57,11 +57,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 connectToDB(() =>
-  httpServer.listen(PORT, () => {
+  app.listen(PORT, () => {
     if (process.env.NODE_ENV === 'production') {
       console.log('Production server started!');
     } else {
-      console.log(`Now browse to http://localhost:${PORT}/graphql`);
+      console.log(`Now browse to http://localhost:${PORT}`);
     }
   })
 );
