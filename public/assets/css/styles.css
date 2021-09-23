@@ -1,0 +1,15 @@
+body,
+html {
+    margin: 0;
+    padding: 0;
+}
+main {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.ui.card .image {
+    min-width: 100%;
+    min-height: 15rem;
+}
