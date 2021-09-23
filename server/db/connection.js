@@ -27,7 +27,8 @@ export function connectToDB(cb) {
     console.log(
       chalk.bold.green.bgGrey(
         `Successful connection to ${
-          process.env.MONGODB_URL || 'mongodb://localhost:27017/chat'
+          process.env.MONGODB_URL ||
+          'mongodb://localhost:27017/cloudinary-storage'
         }`
       )
     );
