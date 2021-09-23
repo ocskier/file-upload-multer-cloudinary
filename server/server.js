@@ -3,6 +3,7 @@ import session from 'express-session';
 import mongoSession from 'connect-mongodb-session';
 import chalk from 'chalk';
 import morgan from 'morgan';
+import router from './routes/index.js';
 import path from 'path';
 
 import { connectToDB } from './db/connection.js';
@@ -55,6 +56,8 @@ app.use(express.static('public'));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(router);
 
 connectToDB(() =>
   app.listen(PORT, () => {
