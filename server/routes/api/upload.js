@@ -11,7 +11,7 @@ upload.post('/', uploader.single('image-file'), async (req, res) => {
     const result = await cloudinary.uploader.upload(`./server/test/${req.file.filename}`);
     await unlink(`./server/test/${req.file.filename}`);
     console.log(`Successfully deleted ${req.file.filename}`);
-    res.json({ msg: 'Path hit for file upload!' });
+    res.json({ msg: 'Completed file upload!' });
   } catch (error) {
     console.error('There was an error:', error.message);
   } 
