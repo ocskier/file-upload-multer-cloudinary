@@ -13,3 +13,10 @@ main {
     min-width: 100%;
     min-height: 15rem;
 }
+
+.ui.card .image:after {
+  content: "Drag and Drop Here!";
+  position: absolute;
+  top: 45%;
+  left: 30%;
+}
