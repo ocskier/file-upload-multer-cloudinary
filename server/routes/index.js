@@ -1,4 +1,4 @@
-import { Router } from 'express'
+import { Router } from 'express';
 import apiRoutes from './api/index.js';
 import authRoutes from './auth/index.js';
 import htmlRoutes from './html.js';
