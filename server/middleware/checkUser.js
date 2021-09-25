@@ -1,4 +1,4 @@
-export default checkUser = (req, res, next) => {
+export default (req, res, next) => {
   if (!req.user) {
     next();
   } else {

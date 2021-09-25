@@ -1,5 +1,7 @@
 import { Router } from 'express';
 
+import passport from '../../middleware/passport.js';
+
 const users = Router();
 
 users.get('/', async (req, res) => {
