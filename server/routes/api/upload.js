@@ -13,10 +13,12 @@ upload.post('/', uploader.single('image-file'), async (req, res) => {
     );
     await unlink(`./server/test/${req.file.filename}`);
     console.log(`Successfully deleted ${req.file.filename}`);
-    res.json({ msg: 'Completed file upload!' });
+    return res.json({ msg: 'Completed file upload!' });
   } catch (error) {
     console.error('There was an error:', error.message);
-    res.status(422).json({ msg: `There was an error: ${error.message}` });
+    return res
+      .status(422)
+      .json({ msg: `There was an error: ${error.message}` });
   }
 });
 

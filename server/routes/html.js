@@ -8,19 +8,25 @@ const html = Router();
 const __dirname = path.resolve();
 
 html.get('/profile', checkUser, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/profile.html'));
+  return res.sendFile(path.join(__dirname, 'public/profile.html'));
 });
 
-html.get('/login', checkUser, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/login.html'));
+html.get('/login', (req, res) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  return res.sendFile(path.join(__dirname, 'public/login.html'));
 });
 
-html.get('/register', checkUser, (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/register.html'));
+html.get('/register', (req, res) => {
+  if (req.user) {
+    return res.redirect('/');
+  }
+  return res.sendFile(path.join(__dirname, 'public/register.html'));
 });
 
 html.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  return res.sendFile(path.join(__dirname, 'public/index.html'));
 });
 
 export default html;

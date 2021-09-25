@@ -3,9 +3,9 @@ const registerForm = document.querySelector('.register-form');
 const handleRegister = async (files) => {
   const user = {};
   for (prop in user) {
-      if (!user[prop]) {
-          return
-      }
+    if (!user[prop]) {
+      return;
+    }
   }
 
   try {
@@ -13,7 +13,7 @@ const handleRegister = async (files) => {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
-        "CONTENT-TYPE": 'application/json',
+        'CONTENT-TYPE': 'application/json',
       },
     });
     const data = await response.json();

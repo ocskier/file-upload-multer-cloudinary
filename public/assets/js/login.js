@@ -13,8 +13,8 @@ const handleLogin = async (e) => {
       method: 'POST',
       body: JSON.stringify(userCreds),
       headers: {
-        "CONTENT-TYPE": 'application/json',
-      }
+        'CONTENT-TYPE': 'application/json',
+      },
     });
     const data = await response.json();
     console.log(data);

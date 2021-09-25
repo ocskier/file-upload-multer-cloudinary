@@ -1,7 +1,10 @@
-export default (req, res, next) => {
-  if (!req.user) {
+const checkUser = (req, res, next) => {
+  if (req.user) {
     next();
   } else {
-    res.redirect('/');
+    console.log('User not logged in redirecting to login!');
+    return res.redirect('/login');
   }
 };
+
+export default checkUser;
