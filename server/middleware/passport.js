@@ -9,22 +9,20 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (_id, done) => {
   console.log(_id);
-  // const matchingUser = await db.User.findById(_id).populate('messages');
-  done(null, _id);
+  const matchingUser = await db.User.findById(_id).select('-password -__v');
+  done(null, matchingUser);
 });
 
 passport.use(
-  new LocalStrategy(async function (username, password, done) {
+  new LocalStrategy(async function (email, password, done) {
     try {
-      // const user = await User.findOne({ username: username });
-      // if (!user) {
-      //   return done(null, false);
-      // }
-      // if (!user.verifyPassword(password)) {
-      //   return done(null, false);
-      // }
-      // test user
-      const user = { id: 1, username: 'newuser', password: 'newpassword' };
+      const user = await User.findOne({ email });
+      if (!user) {
+        return done(null, false);
+      }
+      if (!user.verifyPassword(password)) {
+        return done(null, false);
+      }
       return done(null, user);
     } catch (err) {
       return done(err);

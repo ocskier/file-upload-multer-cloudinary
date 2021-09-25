@@ -9,7 +9,7 @@ const handleLogin = async (e) => {
   }
 
   try {
-    const response = await fetch('/auth/login', {
+    const response = await fetch('/auth/users/login', {
       method: 'POST',
       body: JSON.stringify(userCreds),
       headers: {

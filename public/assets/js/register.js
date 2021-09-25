@@ -9,7 +9,7 @@ const handleRegister = async (files) => {
   }
 
   try {
-    const response = await fetch('/auth/register', {
+    const response = await fetch('/auth/users/register', {
       method: 'POST',
       body: JSON.stringify(user),
       headers: {
