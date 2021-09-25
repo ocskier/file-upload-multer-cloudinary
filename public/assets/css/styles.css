@@ -10,6 +10,7 @@ main {
     align-items: center;
 }
 .ui.card .image {
+    display: flex;
     min-width: 100%;
     min-height: 15rem;
 }

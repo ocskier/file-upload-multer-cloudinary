@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Cloudinary File Upload</title>
+    <link rel="shortcut icon" href="" />
+    <meta
+      name="description"
+      content="A full-stack app that uploads photos to Cloudinary"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"
+      integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style type="text/css">
+      body {
+        background-color: #dadada;
+      }
+      body > .grid {
+        height: 100%;
+      }
+      .column {
+        max-width: 450px;
+      }
+      .hidden.menu {
+        display: none;
+      }
+      .secondary.pointing.menu .toc.item {
+        display: none;
+      }
+
+      @media only screen and (max-width: 700px) {
+        .ui.fixed.menu {
+          display: none !important;
+        }
+        .secondary.pointing.menu .item,
+        .secondary.pointing.menu .menu {
+          display: none;
+        }
+        .secondary.pointing.menu .toc.item {
+          display: block;
+        }
+      }
+    </style>
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">
+        You are using an <strong>outdated</strong> browser. Please
+        <a href="#">upgrade your browser</a> to improve your experience.
+      </p>
+    <![endif]-->
+    <!-- Following Menu -->
+    <div class="ui large top fixed hidden menu">
+      <div class="ui container">
+        <a class="active item" href="/">Home</a>
+      </div>
+    </div>
+
+    <!-- Sidebar Menu -->
+    <div class="ui vertical inverted sidebar menu">
+      <a class="active item" href="/">Home</a>
+    </div>
+
+    <!-- Page Contents -->
+    <div class="pusher">
+      <div class="ui inverted vertical masthead center aligned segment">
+        <div class="ui container">
+          <div class="ui large secondary inverted pointing menu">
+            <a class="toc item">
+              <i class="sidebar icon"></i>
+            </a>
+            <a class="active item" href="/">Home</a>
+          </div>
+        </div>
+      </div>
+      <main>
+        <div class="ui card">
+          <div class="image">
+            <img src="" />
+          </div>
+          <div class="extra content">
+            <div class="ui form photo-form">
+              <div class="field">
+                <label for="file-input">Photo File Upload</label>
+                <input
+                  id="file-upload"
+                  name="file-input"
+                  type="file"
+                  accept="image/png, image/jpeg"
+                  placeholder="File Path"
+                />
+              </div>
+              <div class="ui submit button">Submit</div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/profile.js" async defer></script>
+    <script>
+      $(document)
+      .ready(function() {
+          // fix menu when passed
+          $('.masthead').visibility({
+              once: false,
+              onBottomPassed: function() {
+              $('.fixed.menu').transition('fade in');
+              },
+              onBottomPassedReverse: function() {
+              $('.fixed.menu').transition('fade out');
+              }
+          });
+
+          // create sidebar and attach to menu open
+          $('.ui.sidebar').sidebar('attach events', '.toc.item');
+      });
+    </script>
+  </body>
+</html>

@@ -16,51 +16,23 @@
     referrerpolicy="no-referrer"
   />
   <style type="text/css">
-
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
     .hidden.menu {
       display: none;
     }
-    .masthead.segment {
-      min-height: 700px;
-      padding: 1em 0em;
-    }
-    .masthead .logo.item img {
-      margin-right: 1em;
-    }
-    .masthead .ui.menu .ui.button {
-      margin-left: 0.5em;
-    }
-    .masthead h1.ui.header {
-      margin-top: 3em;
-      margin-bottom: 0em;
-      font-size: 4em;
-      font-weight: normal;
-    }
-    .masthead h2 {
-      font-size: 1.7em;
-      font-weight: normal;
-    }
-    .ui.vertical.stripe {
-      padding: 8em 0em;
-    }
-    .ui.vertical.stripe h3 {
-      font-size: 2em;
-    }
-    .ui.vertical.stripe .button + h3,
-    .ui.vertical.stripe p + h3 {
-      margin-top: 3em;
-    }
-    .ui.vertical.stripe .floated.image {
-      clear: both;
-    }
-    .ui.vertical.stripe p {
-      font-size: 1.33em;
-    }
-    .ui.vertical.stripe .horizontal.divider {
-      margin: 3em 0em;
-    }
-    .footer.segment {
-      padding: 5em 0em;
+    .middle {
+        margin-top: 10rem !important;
     }
     .secondary.pointing.menu .toc.item {
       display: none;
@@ -77,40 +49,20 @@
       .secondary.pointing.menu .toc.item {
         display: block;
       }
-      .masthead.segment {
-        min-height: 350px;
-      }
-      .masthead h1.ui.header {
-        font-size: 2em;
-        margin-top: 1.5em;
-      }
-      .masthead h2 {
-        margin-top: 0.5em;
-        font-size: 1.5em;
-      }
     }
   </style>
 </head>
 <body>
-
 <!-- Following Menu -->
 <div class="ui large top fixed hidden menu">
   <div class="ui container">
     <a class="active item" href="/">Home</a>
-    <a class="item" href="/profile">Profile</a>
-    <div class="right menu">
-      <div class="item">
-        <a class="ui button" href="/login">Log in / Register</a>
-      </div>
-    </div>
   </div>
 </div>
 
 <!-- Sidebar Menu -->
 <div class="ui vertical inverted sidebar menu">
   <a class="active item" href="/">Home</a>
-  <a class="item" href="/profile">Profile</a>
-  <a class="item" href="/login">Login / Register</a>
 </div>
 
 
@@ -124,51 +76,50 @@
           <i class="sidebar icon"></i>
         </a>
         <a class="active item" href="/">Home</a>
-        <a class="item" href="/profile">Profile</a>
-        <div class="right item">
-          <a class="ui inverted button" href="/login">Log in / Register</a>
-        </div>
       </div>
     </div>
 
-    <div class="ui text container">
-      <h1 class="ui inverted header">
-        Test Site
-      </h1>
-      <h2>Demoing Cloudinary and Drag and Drop</h2>
-    </div>
-
   </div>
-
-  <div class="ui vertical stripe segment">
-    <div class="ui text container">
-      <h3 class="ui header">Go to the <a href="/profile" >Profile Page</a> to Update your Pic!</h3>
-    </div>
-  </div>
-
-
-  <div class="ui inverted vertical footer segment">
-    <div class="ui container">
-      <div class="ui stackable inverted grid centered">
-        <div class="three wide column">
-          <h4 class="ui inverted header">About</h4>
-          <div class="ui inverted link list">
-            <a href="#" class="item">Sitemap</a>
-            <a href="#" class="item">Contact Us</a>
-          </div>
+  <div class="ui middle aligned center aligned grid">
+    <div class="column">
+        <h2 class="ui teal image header">
+        <div class="content">
+            Log-in to your account
         </div>
-        <div class="three wide column"></div>
-        <div class="three wide column"></div>
-      </div>
+        </h2>
+        <form class="ui large form">
+        <div class="ui stacked segment">
+            <div class="field">
+            <div class="ui left icon input">
+                <i class="user icon"></i>
+                <input type="text" name="email" placeholder="E-mail address">
+            </div>
+            </div>
+            <div class="field">
+            <div class="ui left icon input">
+                <i class="lock icon"></i>
+                <input type="password" name="password" placeholder="Password">
+            </div>
+            </div>
+            <div class="ui fluid large teal submit button">Login</div>
+        </div>
+
+        <div class="ui error message"></div>
+
+        </form>
+
+        <div class="ui message">
+        New to us? <a href="/register">Sign Up</a>
+        </div>
     </div>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    $(document)
+  $(document)
     .ready(function() {
-
         // fix menu when passed
         $('.masthead').visibility({
             once: false,
@@ -182,9 +133,41 @@
 
         // create sidebar and attach to menu open
         $('.ui.sidebar').sidebar('attach events', '.toc.item');
+        $('.ui.form')
+            .form({
+            fields: {
+                email: {
+                identifier  : 'email',
+                rules: [
+                    {
+                    type   : 'empty',
+                    prompt : 'Please enter your e-mail'
+                    },
+                    {
+                    type   : 'email',
+                    prompt : 'Please enter a valid e-mail'
+                    }
+                ]
+                },
+                password: {
+                identifier  : 'password',
+                rules: [
+                    {
+                    type   : 'empty',
+                    prompt : 'Please enter your password'
+                    },
+                    {
+                    type   : 'length[6]',
+                    prompt : 'Your password must be at least 6 characters'
+                    }
+                ]
+                }
+            }
+            })
+        ;
     })
-;
-</script>
+  ;
+  </script>
 </body>
 
 </html>
