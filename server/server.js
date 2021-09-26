@@ -9,13 +9,11 @@ import { connectToDB } from './db/connection.js';
 import passport from './middleware/passport.js';
 import router from './routes/index.js';
 
-console.log(process.env);
-
 const PORT = process.env.PORT || 4000;
 
 let __dirname = path.resolve();
 if (process.env.NODE_ENV === 'production') {
-  __dirname = path.join(__dirname, '../');
+  __dirname = path.join(__dirname, './');
 }
 
 const app = express();
