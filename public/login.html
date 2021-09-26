@@ -117,57 +117,7 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.js" integrity="sha512-dqw6X88iGgZlTsONxZK9ePmJEFrmHwpuMrsUChjAw1mRUhUITE5QU9pkcSox+ynfLhL15Sv2al5A0LVyDCmtUw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script>
-  $(document)
-    .ready(function() {
-        // fix menu when passed
-        $('.masthead').visibility({
-            once: false,
-            onBottomPassed: function() {
-            $('.fixed.menu').transition('fade in');
-            },
-            onBottomPassedReverse: function() {
-            $('.fixed.menu').transition('fade out');
-            }
-        });
-
-        // create sidebar and attach to menu open
-        $('.ui.sidebar').sidebar('attach events', '.toc.item');
-        $('.ui.form')
-            .form({
-            fields: {
-                email: {
-                identifier  : 'email',
-                rules: [
-                    {
-                    type   : 'empty',
-                    prompt : 'Please enter your e-mail'
-                    },
-                    {
-                    type   : 'email',
-                    prompt : 'Please enter a valid e-mail'
-                    }
-                ]
-                },
-                password: {
-                identifier  : 'password',
-                rules: [
-                    {
-                    type   : 'empty',
-                    prompt : 'Please enter your password'
-                    },
-                    {
-                    type   : 'length[6]',
-                    prompt : 'Your password must be at least 6 characters'
-                    }
-                ]
-                }
-            }
-            })
-        ;
-    })
-  ;
-  </script>
+<script src="assets/js/login.js"></script>
 </body>
 
 </html>

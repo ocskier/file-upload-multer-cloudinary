@@ -1,10 +1,11 @@
 import { Router } from 'express';
 
+import db from '../../models/index.js';
 import passport from '../../middleware/passport.js';
 
 const users = Router();
 
-users.get('/', async (req, res) => {
+users.get('/', (req, res) => {
   if (req.user) {
     console.log(`User is already logged in: ${req.user.first}!`);
     return res.json(req.user);
@@ -14,7 +15,7 @@ users.get('/', async (req, res) => {
   }
 });
 
-users.post('/login', passport.authenticate, async (req, res) => {
+users.post('/login', passport.authenticate('local'), (req, res) => {
   if (req.user) {
     console.log(`User ${req.user.first} is now logged in!`);
     return res.json({ msg: `Successful login of user!` });
@@ -30,8 +31,8 @@ users.post('/register', async ({ body }, res) => {
     console.log(`User ${user.first} is now registered!`);
     return res.json({ msg: `Successful register of user!` });
   } catch (error) {
-    console.error('Couldnt register user!');
-    return res.status(422).json({ msg: 'Couldnt register user!' });
+    console.error(`Couldnt register user: ${error}`);
+    return res.status(422).json({ msg: `Couldnt register user: ${error}` });
   }
 });
 

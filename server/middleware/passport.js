@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
-// import db from '../models/index.js';
+import db from '../models/index.js';
 
 passport.serializeUser((user, done) => {
   done(null, user._id);
@@ -15,20 +15,30 @@ passport.deserializeUser(async (_id, done) => {
 });
 
 passport.use(
-  new LocalStrategy(async function (email, password, done) {
-    try {
-      const user = await User.findOne({ email });
-      if (!user) {
-        return done(null, false);
+  new LocalStrategy(
+    {
+      usernameField: 'email',
+    },
+    async (email, password, done) => {
+      try {
+        const user = await db.User.findOne({ email }).exec();
+        if (!user) {
+          return done(null, false, {
+            message: 'Incorrect email.',
+          });
+        }
+        if (!user.verifyPassword(password)) {
+          return done(null, false, {
+            message: 'Incorrect password.',
+          });
+        }
+        return done(null, user);
+      } catch (err) {
+        console.log(`There was an error in passport: ${err}`);
+        return done(err);
       }
-      if (!user.verifyPassword(password)) {
-        return done(null, false);
-      }
-      return done(null, user);
-    } catch (err) {
-      return done(err);
     }
-  })
+  )
 );
 
 export default passport;

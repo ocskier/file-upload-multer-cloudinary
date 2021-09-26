@@ -49,7 +49,7 @@ UserSchema.virtual('full').get(function () {
 });
 
 UserSchema.pre('save', function (next, done) {
-  bcrypt.hash(myPlaintextPassword, saltRounds, function (err, hash) {
+  bcrypt.hash(this.password, saltRounds, (err, hash) => {
     // Store hash in your password DB.
     if (err) {
       next(new Error(err));
@@ -60,11 +60,9 @@ UserSchema.pre('save', function (next, done) {
   });
 });
 
-UserSchema.method('verifyPassword', (rawPassword) => {
-  bcrypt.compare(rawPassword, this.password).then(function (result) {
-    console.log(result);
-    return result;
-  });
+UserSchema.method('verifyPassword', async function (rawPassword) {
+  const result = await bcrypt.compare(rawPassword, this.password);
+  return result;
 });
 
 const User = model('User', UserSchema);

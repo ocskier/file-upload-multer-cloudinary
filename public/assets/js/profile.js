@@ -12,6 +12,7 @@ const handleFileChange = (e) => {
 };
 
 const handleFileSubmit = (e) => {
+  photoFormSubmit.classList.toggle('loading');
   e.preventDefault(); // not really needed here but good form
   handleFileUpload(photoFileInput.files);
 };
@@ -29,6 +30,8 @@ const handleFileUpload = async (files) => {
     console.log(data);
   } catch (error) {
     console.log(error);
+  } finally {
+    photoFormSubmit.classList.toggle('loading');
   }
 };
 

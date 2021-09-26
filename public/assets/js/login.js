@@ -1,26 +1,77 @@
-const loginForm = document.querySelector('.login-form');
+$(document).ready(function () {
+  // fix menu when passed
+  $('.masthead').visibility({
+    once: false,
+    onBottomPassed: function () {
+      $('.fixed.menu').transition('fade in');
+    },
+    onBottomPassedReverse: function () {
+      $('.fixed.menu').transition('fade out');
+    },
+  });
 
-const handleLogin = async (e) => {
-  const userCreds = {};
-  for (cred in userCreds) {
-    if (!userCreds[cred]) {
-      return;
-    }
-  }
-
-  try {
-    const response = await fetch('/auth/users/login', {
-      method: 'POST',
-      body: JSON.stringify(userCreds),
-      headers: {
-        'CONTENT-TYPE': 'application/json',
+  // create sidebar and attach to menu open
+  $('.ui.sidebar').sidebar('attach events', '.toc.item');
+  $('.ui.form')
+    .form({
+      fields: {
+        email: {
+          identifier: 'email',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter your e-mail',
+            },
+            {
+              type: 'email',
+              prompt: 'Please enter a valid e-mail',
+            },
+          ],
+        },
+        password: {
+          identifier: 'password',
+          rules: [
+            {
+              type: 'empty',
+              prompt: 'Please enter your password',
+            },
+            {
+              type: 'length[6]',
+              prompt: 'Your password must be at least 6 characters',
+            },
+          ],
+        },
       },
-    });
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+    })
+    .submit(async (e) => {
+      e.preventDefault();
+      $(e.target).toggleClass('loading');
+      const userCreds = {
+        email: $('input[name="email"]').val().trim(),
+        password: $('input[name="password"]').val().trim(),
+      };
+      for (cred in userCreds) {
+        if (!userCreds[cred]) {
+          return;
+        }
+      }
 
-loginForm.addEventListener('submit', handleLogin);
+      try {
+        const response = await fetch('/auth/users/login', {
+          method: 'POST',
+          body: JSON.stringify(userCreds),
+          headers: {
+            'CONTENT-TYPE': 'application/json',
+          },
+        });
+        const data = await response.json();
+        console.log(data);
+        location.replace('/');
+      } catch (error) {
+        console.log(error);
+      } finally {
+        e.target.reset();
+        $(e.target).toggleClass('loading');
+      }
+    });
+});
