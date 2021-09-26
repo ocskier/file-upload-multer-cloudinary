@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import path from 'path';
+import { config } from 'dotenv';
+config();
 
 import checkUser from '../middleware/checkUser.js';
 

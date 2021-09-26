@@ -8,6 +8,8 @@ import path from 'path';
 import { connectToDB } from './db/connection.js';
 import passport from './middleware/passport.js';
 import router from './routes/index.js';
+import { config } from 'dotenv';
+config();
 
 const PORT = process.env.PORT || 4000;
 
