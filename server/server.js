@@ -11,10 +11,10 @@ import router from './routes/index.js';
 
 const PORT = process.env.PORT || 4000;
 
-let __dirname = path.resolve();
-if (process.env.NODE_ENV === 'production') {
-  __dirname = path.join(__dirname, './');
-}
+// let __dirname = path.resolve();
+// if (process.env.NODE_ENV === 'production') {
+//   __dirname = path.join(__dirname, './');
+// }
 
 const app = express();
 
@@ -56,7 +56,7 @@ app.use(
     },
   })
 );
-app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.static('./public'));
 app.use(passport.initialize());
 app.use(passport.session());
 
