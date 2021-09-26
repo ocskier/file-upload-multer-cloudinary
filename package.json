@@ -2,31 +2,16 @@
   "name": "file-upload-multer-cloudinary",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "type": "module",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "watch": "nodemon server/server.js"
+    "develop": "cd server && npm run watch",
+    "install": "cd server && npm install"
   },
   "keywords": [],
   "author": "Jon Jackson",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "chalk": "^4.1.2",
-    "cloudinary": "^1.27.0",
-    "connect-mongodb-session": "^2.4.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.2",
-    "mongoose": "^5.13.2",
-    "morgan": "^1.10.0",
-    "multer": "^1.4.3",
-    "passport": "^0.4.1",
-    "passport-local": "^1.0.0",
-    "validator": "^13.6.0"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.12"
+    "dotenv": "^10.0.0"
   }
 }

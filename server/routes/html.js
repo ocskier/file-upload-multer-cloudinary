@@ -8,21 +8,21 @@ const html = Router();
 const __dirname = path.resolve();
 
 html.get('/profile', checkUser, (req, res) => {
-  return res.sendFile(path.join(__dirname, 'public/profile.html'));
+  return res.sendFile(path.join(__dirname, '../public/profile.html'));
 });
 
 html.get('/login', (req, res) => {
   if (req.user) {
     return res.redirect('/');
   }
-  return res.sendFile(path.join(__dirname, 'public/login.html'));
+  return res.sendFile(path.join(__dirname, '../public/login.html'));
 });
 
 html.get('/register', (req, res) => {
   if (req.user) {
     return res.redirect('/');
   }
-  return res.sendFile(path.join(__dirname, 'public/register.html'));
+  return res.sendFile(path.join(__dirname, '../public/register.html'));
 });
 
 html.get('/logout', (req, res) => {
@@ -31,7 +31,7 @@ html.get('/logout', (req, res) => {
 });
 
 html.get('*', (req, res) => {
-  return res.sendFile(path.join(__dirname, 'public/index.html'));
+  return res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 export default html;
