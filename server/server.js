@@ -53,9 +53,10 @@ app.use(
 );
 app.use(
   express.static(
-    process.env.NODE_ENV === 'production'
-      ? './public'
-      : path.join(path.resolve(), '../public')
+    path.join(
+      path.resolve(),
+      process.env.NODE_ENV === 'production' ? './public' : '../public'
+    )
   )
 );
 app.use(passport.initialize());
