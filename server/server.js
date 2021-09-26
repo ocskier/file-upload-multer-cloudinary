@@ -4,7 +4,6 @@ import mongoSession from 'connect-mongodb-session';
 import chalk from 'chalk';
 import morgan from 'morgan';
 import router from './routes/index.js';
-import path from 'path';
 
 import { connectToDB } from './db/connection.js';
 import passport from './middleware/passport.js';

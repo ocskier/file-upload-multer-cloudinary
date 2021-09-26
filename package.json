@@ -5,13 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
-    "develop": "cd server && npm run watch",
+    "start:dev": "cd server && npm run watch",
     "install": "cd server && npm install"
   },
   "keywords": [],
   "author": "Jon Jackson",
-  "license": "ISC",
-  "dependencies": {
-    "dotenv": "^10.0.0"
-  }
+  "license": "ISC"
 }
