@@ -51,9 +51,7 @@ app.use(
     },
   })
 );
-console.log(path.join(path.resolve(), '../../public'));
-app.use(express.static(path.join(path.resolve(), '../../public')));
-
+app.use(express.static('../public'));
 app.use(passport.initialize());
 app.use(passport.session());
 
