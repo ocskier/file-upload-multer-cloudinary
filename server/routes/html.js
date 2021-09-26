@@ -31,7 +31,7 @@ html.get('/logout', (req, res) => {
 });
 
 html.get('*', (req, res) => {
-  return res.sendFile(path.join(__dirname, './public/index.html'));
+  return res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 export default html;
