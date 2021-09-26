@@ -25,6 +25,11 @@ html.get('/register', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public/register.html'));
 });
 
+html.get('/logout', (req, res) => {
+  req.logout();
+  return res.redirect('/');
+});
+
 html.get('*', (req, res) => {
   return res.sendFile(path.join(__dirname, 'public/index.html'));
 });
