@@ -9,7 +9,7 @@ let __dirname = path.resolve();
 if (process.env.NODE_ENV === 'production') {
   __dirname = path.join(__dirname, './server');
 }
-console.log(__dirname);
+
 html.get('/profile', checkUser, (req, res) => {
   return res.sendFile(path.join(__dirname, '../public/profile.html'));
 });
