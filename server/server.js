@@ -1,12 +1,13 @@
+import chalk from 'chalk';
 import express from 'express';
 import session from 'express-session';
 import mongoSession from 'connect-mongodb-session';
-import chalk from 'chalk';
 import morgan from 'morgan';
-import router from './routes/index.js';
+import path from 'path';
 
 import { connectToDB } from './db/connection.js';
 import passport from './middleware/passport.js';
+import router from './routes/index.js';
 
 const PORT = process.env.PORT || 4000;
 
@@ -51,7 +52,7 @@ app.use(
   })
 );
 
-app.use(express.static('../public'));
+app.use(express.static(path.join(path.resolve(), '../public')));
 
 app.use(passport.initialize());
 app.use(passport.session());
