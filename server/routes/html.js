@@ -5,7 +5,10 @@ import checkUser from '../middleware/checkUser.js';
 
 const html = Router();
 
-const __dirname = path.resolve();
+let __dirname = path.resolve();
+if (process.env.NODE_ENV === 'production') {
+  __dirname = path.join(__dirname, './');
+}
 
 html.get('/profile', checkUser, (req, res) => {
   return res.sendFile(path.join(__dirname, '../public/profile.html'));
