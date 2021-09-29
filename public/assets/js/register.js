@@ -54,6 +54,7 @@ $(document).ready(function () {
       };
       for (prop in user) {
         if (!user[prop]) {
+          $(e.target).toggleClass('loading');
           return;
         }
       }
@@ -67,9 +68,13 @@ $(document).ready(function () {
         });
         const data = await response.json();
         console.log(data);
-        location.replace('/login');
+        showToast('Successfully created account!', 1500);
+        setTimeout(() => {
+          location.replace('/login');
+        }, 1500);
       } catch (error) {
         console.log(error);
+        showToast(error, 3000, 'error');
       } finally {
         e.target.reset();
         $(e.target).toggleClass('loading');

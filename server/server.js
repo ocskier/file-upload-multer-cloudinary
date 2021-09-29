@@ -15,11 +15,18 @@ const app = express();
 
 app.use(
   morgan((tokens, req, res) => {
-    return [
-      chalk.bold.blueBright.bgGray(tokens.method(req, res)),
-      chalk.bold.yellowBright.bgGray(tokens.status(req, res)),
-      chalk.bold.redBright.bgGray(tokens.url(req, res)),
-    ].join(' ');
+    return (
+      '--> ' +
+      [
+        chalk.white.bgGray.bold(tokens.method(req, res)),
+        tokens.status(req, res) >= 400
+          ? chalk.rgb(248, 8, 8).bold.bgGray(tokens.status(req, res))
+          : tokens.status(req, res) >= 300 && tokens.status(req, res) < 400
+          ? chalk.rgb(253, 216, 4).bold.bgGray(tokens.status(req, res))
+          : chalk.bold.rgb(31, 230, 38).bgGray(tokens.status(req, res)),
+        chalk.white.bgGray(tokens.url(req, res)),
+      ].join(' ')
+    );
   })
 );
 

@@ -52,6 +52,7 @@ $(document).ready(function () {
       };
       for (cred in userCreds) {
         if (!userCreds[cred]) {
+          $(e.target).toggleClass('loading');
           return;
         }
       }
@@ -66,9 +67,13 @@ $(document).ready(function () {
         });
         const data = await response.json();
         console.log(data);
-        location.replace('/');
+        showToast('Successfully logged in!', 1500);
+        setTimeout(() => {
+          location.replace('/');
+        }, 1500);
       } catch (error) {
         console.log(error);
+        showToast(error, 3000, 'error');
       } finally {
         e.target.reset();
         $(e.target).toggleClass('loading');

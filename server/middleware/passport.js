@@ -27,7 +27,8 @@ passport.use(
             message: 'Incorrect email.',
           });
         }
-        if (!user.verifyPassword(password)) {
+        const validPwd = await user.verifyPassword(password);
+        if (!validPwd) {
           return done(null, false, {
             message: 'Incorrect password.',
           });

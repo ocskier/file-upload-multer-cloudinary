@@ -9,15 +9,31 @@ main {
     justify-content: center;
     align-items: center;
 }
-.ui.card .image {
+.custom-error {
+    background: linear-gradient(to right,#f0958fd9,#ee2416d9);
+    border-radius: 0.25rem;
+}
+.success {
+    background: linear-gradient(to right,#00b09b, #96c93d);
+    border-radius: 0.25rem;
+}
+.masthead .ui.container:first-child {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+.masthead .ui.container .secondary:first-child {
+    min-height: 4rem;
+}
+
+/* .ui.card .image {
     display: flex;
     min-width: 100%;
     min-height: 15rem;
-}
+} */
 
-.ui.card .image:after {
+/* .ui.card .image:after {
   content: "Drag and Drop Here!";
   position: absolute;
   top: 45%;
   left: 30%;
-}
+} */

@@ -16,6 +16,7 @@ users.get('/', (req, res) => {
 });
 
 users.post('/login', passport.authenticate('local'), (req, res) => {
+  console.log(req.user);
   if (req.user) {
     console.log(`User ${req.user.first} is now logged in!`);
     return res.json({ msg: `Successful login of user!` });
