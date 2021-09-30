@@ -1,6 +1,7 @@
 const photoFormSubmit = document.querySelector('.photo-form .ui.submit.button');
 const photoFileInput = document.querySelector('#file-upload');
-let preview = document.querySelector('.ui.card .image');
+const profileItems = document.querySelectorAll('.ui.list .item');
+let preview = document.querySelector('.ui.card .preview');
 
 const fileReader = new FileReader();
 fileReader.onload = function (e) {
@@ -43,6 +44,9 @@ const drop = (e) => {
   const files = dt.files;
   photoFileInput.files = files;
   preview.style.color = 'transparent';
+  document
+    .querySelector('.ui.card.upload-card')
+    .classList.add('animate__headShake');
   fileReader.readAsDataURL(files[0]);
 };
 
@@ -63,6 +67,19 @@ const dragover = (e) => {
   preview.style.backgroundColor = 'grey';
 };
 
+const flipProfile = (e) => {
+  if (e.target.closest('.profile')) {
+    document.querySelector('.upload-card').classList.add('hide');
+    document.querySelector('.profile-card').classList.remove('hide');
+  } else {
+    document.querySelector('.upload-card').classList.remove('hide');
+    document.querySelector('.profile-card').classList.add('hide');
+  }
+};
+
+Array.from(profileItems).forEach((el) =>
+  el.addEventListener('click', flipProfile)
+);
 preview.addEventListener('dragenter', dragenter, false);
 preview.addEventListener('dragleave', dragleave, false);
 preview.addEventListener('dragover', dragover, false);

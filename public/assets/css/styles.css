@@ -9,6 +9,12 @@ main {
     justify-content: center;
     align-items: center;
 }
+.hide {
+    display:none !important;
+}
+.show {
+    display:flex !important;
+}
 .custom-error {
     background: linear-gradient(to right,#f0958fd9,#ee2416d9);
     border-radius: 0.25rem;
@@ -25,15 +31,32 @@ main {
     min-height: 4rem;
 }
 
-/* .ui.card .image {
+.ui.card:last-child {
+    margin-bottom: 1rem;
+}
+
+.ui.card .preview {
     display: flex;
     min-width: 100%;
     min-height: 15rem;
-} */
+}
 
-/* .ui.card .image:after {
-  content: "Drag and Drop Here!";
-  position: absolute;
-  top: 45%;
-  left: 30%;
-} */
+.ui.card .preview:after {
+    content: "Drag and Drop Here!";
+    position: absolute;
+    top: 45%;
+    left: 30%;
+}
+.ui.list {
+    flex-basis: 42%;
+}
+.profile-card {
+    min-height: 25rem !important;
+}
+.upload-card {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+}
+.ui.card.upload-card:last-child {
+    border-radius: .28571429rem !important;
+}
