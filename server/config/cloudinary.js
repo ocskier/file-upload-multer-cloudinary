@@ -1,6 +1,7 @@
 import { v2 as cloudinary } from 'cloudinary';
 import { config } from 'dotenv';
-config({ path: require('find-config')('.env') });
+import findConfig from 'find-config';
+config({ path: findConfig('.env') });
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
