@@ -60,3 +60,19 @@ main {
 .ui.card.upload-card:last-child {
     border-radius: .28571429rem !important;
 }
+.ui.card.profile-card > .extra.content {
+    display: flex;
+    flex-direction: column;
+}
+.ui.card.profile-card > .extra.content > .circular {
+    max-height: 14rem;
+    align-self: center;
+    margin-bottom: 2rem;
+    width: 14rem;
+}
+.ui.card.profile-card > .extra.content > .circular ~ p {
+    font-weight: 800;
+}
+.ui.card.profile-card > .extra.content > .circular ~ p > span {
+    font-weight: normal;
+}

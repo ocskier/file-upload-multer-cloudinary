@@ -70,11 +70,19 @@
         }
       }
       @media only screen and (max-width: 426px) {
+        main {
+          flex-direction: column;
+        }
         main > .ui.card {
           flex-direction: column;
+          margin-bottom: 0 !important;
+          flex: 1;
         }
         main > .ui.card > .ui.list {
           display: grid;
+        } 
+        main > .ui.card > .ui.card {
+          align-self: center;
         } 
       }
     </style>
@@ -132,9 +140,9 @@
           </div>
           <div class="ui card profile-card ">
             <div class="extra content">
-              <p>Full Name: <span></span></p>
-              <p>Username: <span></span></p>
-              <p>First Name:<span></span></p>
+              <img class="ui image medium circular" src="">
+              <p><span></span>Full Name: <span></span></p>
+              <p><span></span>Username: <span></span></p>
             </div>
           </div>
           <div class="animate__animated ui card upload-card hide">

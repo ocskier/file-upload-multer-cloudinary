@@ -2,6 +2,7 @@ const photoFormSubmit = document.querySelector('.photo-form .ui.submit.button');
 const photoFileInput = document.querySelector('#file-upload');
 const profileItems = document.querySelectorAll('.ui.list .item');
 let preview = document.querySelector('.ui.card .preview');
+let circularProfile = document.querySelector('.image.circular');
 
 const fileReader = new FileReader();
 fileReader.onload = function (e) {
@@ -29,6 +30,7 @@ const handleFileUpload = async (files) => {
     });
     const data = await response.json();
     console.log(data);
+    location.reload();
   } catch (error) {
     console.log(error);
   } finally {
@@ -77,6 +79,21 @@ const flipProfile = (e) => {
   }
 };
 
+const loadUserData = async () => {
+  const response = await fetch('/auth/users');
+  const user = await response.json();
+  circularProfile.setAttribute(
+    'src',
+    user?.image
+      ? user?.image
+      : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToplStyx8pu0DsUkR-zSI6hAAN-vzcrZF0HA&usqp=CAU'
+  );
+  console.log(user);
+  circularProfile.nextElementSibling.childNodes[2].textContent = user.full;
+  circularProfile.nextElementSibling.nextElementSibling.childNodes[2].textContent =
+    user.email;
+};
+
 Array.from(profileItems).forEach((el) =>
   el.addEventListener('click', flipProfile)
 );
@@ -86,3 +103,5 @@ preview.addEventListener('dragover', dragover, false);
 preview.addEventListener('drop', drop, false);
 photoFileInput.addEventListener('change', handleFileChange);
 photoFormSubmit.addEventListener('click', handleFileSubmit);
+
+loadUserData();

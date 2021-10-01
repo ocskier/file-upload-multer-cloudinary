@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import mongoose from 'mongoose';
 import validator from 'validator';
 const { Schema, model } = mongoose;
-const { isEmail } = validator;
+const { isEmail, isUrl } = validator;
 
 const saltRounds = 10;
 const emptyStr = 'You must supply a valid string';
@@ -40,8 +40,19 @@ const UserSchema = new Schema(
       trim: true,
       minLength: 8,
     },
+    image: {
+      type: String,
+      validate: {
+        validator: function () {
+          return isUrl(v);
+        },
+      },
+    },
+    image_public_id: {
+      type: String,
+    },
   },
-  { timestamps: true }
+  { timestamps: true, toJSON: { virtuals: true } }
 );
 
 UserSchema.virtual('full').get(function () {
