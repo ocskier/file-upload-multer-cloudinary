@@ -16,9 +16,15 @@ upload.post('/', uploader.single('image-file'), async (req, res) => {
         );
       }
       const result = await cloudinary.uploader.upload(
-        `./temp/${req.file.filename}`
+        process.env.NODE_ENV === 'production'
+          ? `./server/temp/${req.file.filename}`
+          : `./temp/${req.file.filename}`
       );
-      await unlink(`./temp/${req.file.filename}`);
+      await unlink(
+        process.env.NODE_ENV === 'production'
+          ? `./server/temp/${req.file.filename}`
+          : `./temp/${req.file.filename}`
+      );
       console.log(`Successfully deleted ${req.file.filename}`);
       const user = await db.User.findByIdAndUpdate(req.user.id, {
         image: result.secure_url,
