@@ -5,7 +5,13 @@ import path from 'path';
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     console.log(path.resolve());
-    cb(null, path.resolve(path.resolve(), './temp'));
+    cb(
+      null,
+      path.resolve(
+        path.resolve(),
+        process.env.NODE_ENV === 'production' ? './server/temp' : './temp'
+      )
+    );
   },
 });
 
