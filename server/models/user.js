@@ -52,7 +52,7 @@ const UserSchema = new Schema(
       type: String,
     },
   },
-  { timestamps: true, toJSON: { virtuals: true } }
+  { timestamps: true, toJSON: { virtuals: true }, toObject: { getters: true } }
 );
 
 UserSchema.virtual('full').get(function () {

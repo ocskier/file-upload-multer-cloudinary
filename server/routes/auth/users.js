@@ -8,7 +8,14 @@ const users = Router();
 users.get('/', (req, res) => {
   if (req.user) {
     console.log(`User is already logged in: ${req.user.first}!`);
-    return res.json(req.user);
+    const userProfile = {
+      full: req.user.full,
+      createdAt: req.user.createdAt,
+      updatedAt: req.user.updatedAt,
+      email: req.user.email,
+      image: req.user.image,
+    };
+    return res.json(userProfile);
   } else {
     console.error('There was an error!');
     return res.status(422).json({ msg: 'No user logged in!' });
