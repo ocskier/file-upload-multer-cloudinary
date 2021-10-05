@@ -71,10 +71,10 @@ $(document).ready(function () {
         showToast('Successfully created account!', 1500);
         setTimeout(() => {
           location.replace('/login');
-        }, 1500);
+        }, 1000);
       } catch (error) {
         console.log(error);
-        showToast(error, 3000, 'error');
+        showToast(error, 2500, 'error');
       } finally {
         e.target.reset();
         $(e.target).toggleClass('loading');
